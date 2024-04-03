@@ -1,18 +1,38 @@
-import { get, map } from './util.js';
+import { get } from './util.js';
 
 const base_url = 'https://www.swapi.tech/api/';
 
-async function getCharacters(name) {
-  const response = await get(`${base_url}/people?name=${name}`);
-  if (response.message === 'ok') {
-    let characters;
-    if (response.result !== undefined) {
-      characters = map(response.result);
-    } else {
-      characters = response.results;
-    }
+async function getCharacters() {
+  const response = await get(`${base_url}/people`);
+  if (response.message === 'ok' && response.results !== undefined) {
+    const characters = response.results.map((item) => {
+      return {
+        id: item.uid,
+        name: item.name,
+      };
+    });
     console.log(characters);
   }
 }
 
-getCharacters('R2');
+async function getCharacterByName(name) {
+  const response = await get(`${base_url}/people?name=${name}`);
+  if (response.message === 'ok' && response.result !== undefined) {
+    const character = response.result.map((item) => {
+      return {
+        id: item.uid,
+        name: item.properties.name,
+      };
+    });
+    console.log(character);
+  }
+}
+
+document.getElementById('submit').addEventListener('click', () => {
+  let query = document.getElementById('input').value;
+  if (query === undefined || query === '') {
+    getCharacters();
+  } else {
+    getCharacterByName(query);
+  }
+});
