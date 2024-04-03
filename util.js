@@ -8,4 +8,13 @@ async function get(url) {
   }
 }
 
-export { get };
+// Write a fn that maps array to HTML
+function display(characters) {
+  let ul = document.getElementById('list');
+  ul.innerHTML = '';
+  characters.forEach((c) => {
+    ul.innerHTML += `<li>${c.name}</li>`;
+  });
+}
+
+export { get, display };
