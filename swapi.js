@@ -1,4 +1,4 @@
-import { get } from './util.js';
+import { get, display } from './util.js';
 
 const base_url = 'https://www.swapi.tech/api/';
 
@@ -11,7 +11,7 @@ async function getCharacters() {
         name: item.name,
       };
     });
-    console.log(characters);
+    display(characters);
   }
 }
 
@@ -24,7 +24,7 @@ async function getCharacterByName(name) {
         name: item.properties.name,
       };
     });
-    console.log(character);
+    display(character);
   }
 }
 
