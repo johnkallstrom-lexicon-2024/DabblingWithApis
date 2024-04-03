@@ -1,19 +1,18 @@
-import { get } from './util.js';
+import { get, map } from './util.js';
 
 const base_url = 'https://www.swapi.tech/api/';
 
-async function getCharacters() {
-  const response = await get(`${base_url}/people`);
-  console.log(response);
-}
-
-async function getCharacterByName(name) {
-  let response;
-  if (name !== undefined) {
-    response = await get(`${base_url}/people?name=${name}`);
+async function getCharacters(name) {
+  const response = await get(`${base_url}/people?name=${name}`);
+  if (response.message === 'ok') {
+    let characters;
+    if (response.result !== undefined) {
+      characters = map(response.result);
+    } else {
+      characters = response.results;
+    }
+    console.log(characters);
   }
-  console.log(response);
 }
 
-getCharacters();
-getCharacterByName('luke');
+getCharacters('R2');

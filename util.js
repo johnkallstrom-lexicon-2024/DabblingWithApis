@@ -1,7 +1,22 @@
 async function get(url) {
   const response = await fetch(url);
-  const json = await response.json();
-  return json;
+  try {
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export { get };
+function map(data) {
+  const result = data.map((character) => {
+    return {
+      uid: character.uid,
+      name: character.properties.name,
+      url: character.properties.url,
+    };
+  });
+  return result;
+}
+
+export { get, map };
