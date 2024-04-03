@@ -8,7 +8,6 @@ async function get(url) {
   }
 }
 
-// Write a fn that maps array to HTML
 function display(characters) {
   let ul = document.getElementById('list');
   ul.innerHTML = '';
