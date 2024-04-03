@@ -8,15 +8,4 @@ async function get(url) {
   }
 }
 
-function map(data) {
-  const result = data.map((character) => {
-    return {
-      uid: character.uid,
-      name: character.properties.name,
-      url: character.properties.url,
-    };
-  });
-  return result;
-}
-
-export { get, map };
+export { get };
