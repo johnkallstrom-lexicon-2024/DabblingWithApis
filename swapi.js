@@ -22,6 +22,10 @@ async function getCharacterByName(name) {
       return {
         id: item.uid,
         name: item.properties.name,
+        height: item.properties.height,
+        mass: item.properties.mass,
+        gender: item.properties.gender,
+        hair_color: item.properties.hair_color,
       };
     });
     display(character);
