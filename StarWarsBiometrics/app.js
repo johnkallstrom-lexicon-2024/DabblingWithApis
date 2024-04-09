@@ -3,12 +3,14 @@ import util from './util.js';
 
 const service = new swapiService();
 
-const clear = document.querySelector('#clear');
+const reset = document.querySelector('#reset');
+const input = document.querySelector('#input');
 const submit = document.querySelector('#submit');
+const output = document.querySelector('#list');
 
 async function search() {
   let people = null;
-  let query = document.getElementById('input').value;
+  let query = input.value;
 
   if (query === undefined || query === '') {
     people = await service.getPeople();
@@ -20,6 +22,4 @@ async function search() {
 }
 
 submit.addEventListener('click', search);
-clear.addEventListener('click', () =>
-  util.clear(document.querySelector('#list'))
-);
+reset.addEventListener('click', () => util.clearElements([input, output]));
