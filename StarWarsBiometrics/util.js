@@ -8,21 +8,4 @@ async function get(url) {
   }
 }
 
-function display(characters) {
-  let ul = document.getElementById('list');
-  if (characters.length > 0) {
-    ul.innerHTML = '';
-    characters.forEach((c) => {
-      ul.innerHTML += `<li>Name: ${c.name}</li>`;
-      ul.innerHTML += `<li>Gender: ${c.gender}</li>`;
-      ul.innerHTML += `<li>Height: ${c.height}</li>`;
-      ul.innerHTML += `<li>Mass: ${c.mass}</li>`;
-      ul.innerHTML += `<li>Hair color: ${c.hair_color}</li>`;
-      ul.innerHTML += '<br>';
-    });
-  } else {
-    ul.innerHTML = 'No search results found';
-  }
-}
-
-export { get, display };
+export { get };
