@@ -1,4 +1,4 @@
-async function get(url) {
+async function getJSON(url) {
   const response = await fetch(url);
   try {
     const json = await response.json();
@@ -8,7 +8,7 @@ async function get(url) {
   }
 }
 
-function display(imageUrl) {
+function mapToDOM(imageUrl) {
   const output = document.querySelector('#output');
 
   let img = document.createElement('img');
@@ -19,4 +19,4 @@ function display(imageUrl) {
   output.appendChild(img);
 }
 
-export { get, display };
+export { getJSON, mapToDOM };
