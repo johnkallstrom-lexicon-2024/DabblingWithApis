@@ -1,10 +1,10 @@
-import { get } from './util.js';
+import util from './util.js';
 
 class swapiService {
   #base_url = 'https://www.swapi.tech/api/';
 
   async getPeople() {
-    const json = await get(`${this.#base_url}/people`);
+    const json = await util.getJSON(`${this.#base_url}/people`);
     const people = json.results.map((p) => {
       return {
         id: p.uid,
@@ -15,7 +15,7 @@ class swapiService {
   }
 
   async getPeopleByName(name) {
-    const json = await get(`${this.#base_url}/people?name=${name}`);
+    const json = await util.getJSON(`${this.#base_url}/people?name=${name}`);
     const people = json.result.map((p) => {
       return {
         id: p.uid,

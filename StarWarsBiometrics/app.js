@@ -1,4 +1,5 @@
 import swapiService from './swapiService.js';
+import util from './util.js';
 
 const button = document.querySelector('#submit');
 var service = new swapiService();
@@ -14,5 +15,5 @@ button.addEventListener('click', async () => {
   }
 
   // Map to DOM
-  console.log(people);
+  util.mapToDOM(people);
 });
