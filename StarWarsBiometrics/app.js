@@ -2,7 +2,9 @@ import swapiService from './swapiService.js';
 import util from './util.js';
 
 const service = new swapiService();
-const button = document.querySelector('#submit');
+
+const clear = document.querySelector('#clear');
+const submit = document.querySelector('#submit');
 
 async function search() {
   let people = null;
@@ -17,4 +19,7 @@ async function search() {
   util.mapToDOM(people);
 }
 
-button.addEventListener('click', search);
+submit.addEventListener('click', search);
+clear.addEventListener('click', () =>
+  util.clear(document.querySelector('#list'))
+);

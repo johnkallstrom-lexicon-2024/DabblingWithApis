@@ -42,6 +42,10 @@ class util {
       ul.appendChild(br);
     });
   }
+
+  static clear(element) {
+    element.innerHTML = '';
+  }
 }
 
 export default util;
